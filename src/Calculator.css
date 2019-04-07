@@ -1,0 +1,86 @@
+body {
+    background-color:#c9c9c9;
+    display:flex;
+    justify-content:center;
+  }
+  
+button {
+    background-color: #4CAF50; /* Green */
+    border: 1px solid #417f44;
+    border-radius:3px;
+    box-shadow: 0 2px 6px 0 rgba(0,0,0,0.2), 0 6px  20px 0 rgba(0,0,0,0.19);
+    color: white;
+    cursor:pointer;
+    text-align: center;
+    text-decoration: none;
+    font-size: 20px;
+  }
+
+.buttonPressed {
+    background-color: rgb(135, 235, 139);
+}
+
+#buttons {
+      display:grid;
+      flex-grow: 2;
+      grid-gap: 5px;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+      width: 100%;
+  }
+
+#buttons > #btn0 {
+    grid-column-start:1;
+    grid-column-end: 3;
+}
+
+#buttons > #invertSign:active {
+    background-color: rgb(135, 235, 139);
+}
+
+#calculator {
+    background-color:#484c51;
+    border-radius:10px;
+    box-shadow: 1px 1px 10px 2px #222121, inset -1px -3px 10px 1px #515151;
+    margin-top:20px;
+    padding:20px 20px 20px 20px;
+    width: 275px;
+    height: 375px;
+    /*Flexbox Additions*/
+    display: flex;
+    flex-direction:row;
+    flex-wrap:wrap;
+    justify-content: center;
+  }
+  
+#display {
+    background-color: #cec9be;
+    border: 3px solid #5f5a50;
+    border-radius:5px;
+    flex-grow: 1;
+    margin-bottom:20px;
+    padding:0px 6px 0px 0px;
+    text-align:right;
+    max-width: 95%;
+}
+  
+#displayText {
+    color:#5a5a4c;
+    font-family: 'Orbitron', sans-serif;
+    font-size:16px;
+}
+  
+p {
+    line-height:0px;
+}
+  
+#text {
+    color:#474732;
+    font-family: 'Orbitron', sans-serif;
+    font-size:26px;
+    padding-top:10px;
+}
+
+.bigText {
+      font-size:30px;
+}
