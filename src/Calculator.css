@@ -34,6 +34,16 @@ button {
     grid-column-end: 3;
 }
 
+#buttons > #AC {
+    background-color: rgb(173, 0, 0);
+    border: 1px solid rgb(173, 0, 0);
+}
+
+#buttons > #CE {
+    background-color: rgb(173, 0, 0);
+    border: 1px solid rgb(173, 0, 0);
+}
+
 #buttons > #invertSign:active {
     background-color: rgb(135, 235, 139);
 }
