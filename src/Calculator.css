@@ -2,7 +2,7 @@ body {
     background-color:#c9c9c9;
     display:flex;
     justify-content:center;
-  }
+}
   
 button {
     background-color: #4CAF50; /* Green */
@@ -14,10 +14,10 @@ button {
     text-align: center;
     text-decoration: none;
     font-size: 20px;
-  }
+}
 
 .buttonPressed {
-    background-color: rgb(135, 235, 139);
+    background-color: rgb(112, 214, 115);
 }
 
 #buttons {
@@ -27,25 +27,34 @@ button {
       grid-template-columns: 1fr 1fr 1fr 1fr;
       grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
       width: 100%;
-  }
+      
+}
+
+button:focus {
+    outline: 0;
+}
 
 #buttons > #btn0 {
     grid-column-start:1;
     grid-column-end: 3;
 }
 
-#buttons > #AC {
+#buttons > #AC, #CE {
     background-color: rgb(173, 0, 0);
     border: 1px solid rgb(173, 0, 0);
 }
 
-#buttons > #CE {
-    background-color: rgb(173, 0, 0);
-    border: 1px solid rgb(173, 0, 0);
+#buttons > #AC:active, #CE:active {
+    background-color: rgb(194, 50, 50);
 }
 
-#buttons > #invertSign:active {
-    background-color: rgb(135, 235, 139);
+#buttons > #equals, #invertSign {
+    background-color: rgb(231, 181, 73);
+    border: 1px solid rgb(231, 181, 73);
+}
+
+#buttons > #equals:active, #invertSign:active {
+    background-color: rgb(238, 196, 105);
 }
 
 #calculator {
@@ -61,7 +70,7 @@ button {
     flex-direction:row;
     flex-wrap:wrap;
     justify-content: center;
-  }
+}
   
 #display {
     background-color: #cec9be;
@@ -77,7 +86,8 @@ button {
 #displayText {
     color:#5a5a4c;
     font-family: 'Orbitron', sans-serif;
-    font-size:16px;
+    font-weight: 100;
+    font-size:24px;
 }
   
 p {
