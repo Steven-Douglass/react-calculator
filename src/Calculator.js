@@ -248,7 +248,7 @@ class Calculator extends Component {
                 currentEntry: '0'
             })
         } else if (op === "+-") {
-            if (this.state.currentEntry === '0') {
+            if (this.state.currentEntry == '0') {
                 console.log("TRIG");
                 this.setState({
                     currentEntry: '-0'
