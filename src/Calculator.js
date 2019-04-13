@@ -14,7 +14,6 @@ class Calculator extends Component {
         super(props);
         this.state = {
             currentEntry: '0',
-            lastEntry: '0',
             total: 0,
             currentOperator: ''
         }
@@ -25,7 +24,6 @@ class Calculator extends Component {
         if (this.state.currentEntry.length > 17) {
             this.setState({
                 currentEntry: 'Overflow!',
-                lastEntry: '0',
                 total: 0,
                 currentOperator: ''
             })
@@ -75,7 +73,6 @@ class Calculator extends Component {
                 // There is no current operator, so return the current entry
                 if (this.state.currentEntry !== '-') {
                     this.setState({
-                        lastEntry: this.state.currentEntry,
                         total: parseFloat(this.state.currentEntry),
                         currentOperator: '',
                         currentEntry: '0'
@@ -91,7 +88,6 @@ class Calculator extends Component {
                         total: calculate(this.state.total, this.state.currentEntry, '+'),
                         currentEntry: '0',
                         currentOperator: '',
-                        lastEntry: this.state.currentEntry
                     });
                 }
                 else if (this.state.currentOperator === "-") {
@@ -99,14 +95,12 @@ class Calculator extends Component {
                         total: calculate(this.state.total, this.state.currentEntry, '-'),
                         currentEntry: '0',
                         currentOperator: '',
-                        lastEntry: this.state.currentEntry
                     });
                 } else if (this.state.currentOperator === "*") {
                     this.setState({
                         total: calculate(this.state.total, this.state.currentEntry, '*'),
                         currentEntry: '0',
                         currentOperator: '',
-                        lastEntry: this.state.currentEntry
                     });
                 } else if (this.state.currentOperator === "/") {
                     // eslint-disable-next-line
@@ -117,7 +111,6 @@ class Calculator extends Component {
                             total: calculate(this.state.total, this.state.currentEntry, '/'),
                             currentEntry: '0',
                             currentOperator: '',
-                            lastEntry: this.state.currentEntry
                         });
                     }
                     
@@ -135,21 +128,18 @@ class Calculator extends Component {
                         total: calculate(this.state.total, this.state.currentEntry, this.state.currentOperator),
                         currentEntry: '0',
                         currentOperator: '+',
-                        lastEntry: this.state.total
                     });
                 } else if (this.state.total !== 0) {
                     this.setState({
                         //total: calculate(this.state.currentEntry, this.state.total, "+"),
                         currentEntry: '0',
                         currentOperator: '+',
-                        lastEntry: this.state.currentEntry
                     });
                 } else {
                     this.setState({
                         total: this.state.currentEntry,
                         currentEntry: '0',
                         currentOperator: '+',
-                        lastEntry: this.state.total
                     });
                 }
             } else if (op === '-') {
@@ -162,14 +152,12 @@ class Calculator extends Component {
                         total: calculate(this.state.total, this.state.currentEntry, this.state.currentOperator),
                         currentEntry: '0',
                         currentOperator: '-',
-                        lastEntry: this.state.total
                     })
                 } else if (this.state.total !== 0) {
                     this.setState({
                         //total: calculate(this.state.currentEntry, this.state.total, "-"),
                         currentEntry: '0',
                         currentOperator: '-',
-                        lastEntry: this.state.currentEntry
                     })
                 } else {
                     // total === 0 and currentOperator === ''
@@ -177,7 +165,6 @@ class Calculator extends Component {
                         total: this.state.currentEntry,
                         currentEntry: '0',
                         currentOperator: '-',
-                        lastEntry: this.state.total
                     })
                 }
             } else if (op === '*') {
@@ -190,21 +177,18 @@ class Calculator extends Component {
                         total: calculate(this.state.total, this.state.currentEntry, this.state.currentOperator),
                         currentEntry: '0',
                         currentOperator: '*',
-                        lastEntry: this.state.total
                     })
                 } else if (this.state.total !== 0) {
                     this.setState({
                         //total: calculate(this.state.currentEntry, this.state.total, "*"),
                         currentEntry: '0',
                         currentOperator: '*',
-                        lastEntry: this.state.currentEntry
                     })
                 } else {
                     this.setState({
                         total: this.state.currentEntry,
                         currentEntry: '0',
                         currentOperator: '*',
-                        lastEntry: this.state.total
                     })
                 }
             } else if (op === '/') {
@@ -217,21 +201,18 @@ class Calculator extends Component {
                         total: calculate(this.state.total, this.state.currentEntry, this.state.currentOperator),
                         currentEntry: '0',
                         currentOperator: '/',
-                        lastEntry: this.state.total
                     })
                 } else if (this.state.total !== 0) {
                     this.setState({
                         //total: calculate(this.state.currentEntry, this.state.total, "/"),
                         currentEntry: '0',
                         currentOperator: '/',
-                        lastEntry: this.state.currentEntry
                     })
                 } else {
                     this.setState({
                         total: this.state.currentEntry,
                         currentEntry: '0',
                         currentOperator: '/',
-                        lastEntry: this.state.total
                     })
                 }
             }
@@ -239,7 +220,6 @@ class Calculator extends Component {
         } else if (op === 'AC') {
             this.setState({
                 currentEntry: '0',
-                lastEntry: '0',
                 total: 0,
                 currentOperator: ''
             })
@@ -248,7 +228,7 @@ class Calculator extends Component {
                 currentEntry: '0'
             })
         } else if (op === "+-") {
-            if (this.state.currentEntry == '0') {
+            if (this.state.currentEntry === 0) {
                 console.log("TRIG");
                 this.setState({
                     currentEntry: '-0'
