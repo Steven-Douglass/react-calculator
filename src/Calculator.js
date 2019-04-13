@@ -3,12 +3,6 @@ import './calculate.js';
 import './Calculator.css';
 import { calculate } from './calculate.js';
 
-// TODO
-// Negative press followed by number should produce negative number
-// Keep track of steps taken, i.e. 5+6+7+8 should be on display
-// format output of total to include commas i.e. 1,000,000
-// Make output text bigger / thicker
-
 class Calculator extends Component {
     constructor(props) {
         super(props);
