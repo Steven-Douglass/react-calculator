@@ -46,15 +46,22 @@ class Calculator extends Component {
                     currentEntry: this.state.currentEntry + num
                 })
             }
-        // Numbers
-        } else if (this.state.currentEntry === '0' || this.state.currentEntry === 'Overflow!') {
-            // When the current entry is 0 or 'Overflow', allow it to be changed to 1-9
+        // Number presses
+        } else if (this.state.currentEntry === '0') {
+            // When the current entry is 0, allow it to be changed to 1-9
             if (num !== '0') {
                 this.setState({
                     currentEntry: num
                 })
             } 
-        } else if (this.state.currentEntry === '-0') {
+        } else if (this.state.currentEntry === 'Overflow!') {
+            // When the current entry is 'Overflow!', change
+            // currentEntry to the number that was pressed
+            this.setState({
+                currentEntry: num
+            })
+        }
+        else if (this.state.currentEntry === '-0') {
             // Concatenate the number press to the current negative sign
             this.setState({
                 currentEntry: '-' + num
@@ -70,17 +77,12 @@ class Calculator extends Component {
     handleClickOperator(op) {
         if (op === '=') {
             if (this.state.currentOperator === '') {
-                // There is no current operator, so return the current entry
-                if (this.state.currentEntry !== '-') {
-                    this.setState({
-                        total: parseFloat(this.state.currentEntry),
-                        currentOperator: '',
-                        currentEntry: '0'
-                    });
-                } else {
-                    // Do not perform calculations with the negative 
-                    // symbol '-' as the current entry. Do nothing.
-                }
+                // If there is no current operator, return the current entry
+                this.setState({
+                    total: parseFloat(this.state.currentEntry),
+                    currentOperator: '',
+                    currentEntry: '0'
+                });
             } else {
                 // The current operator is one of: + - * /
                 if (this.state.currentOperator === '+') {
@@ -119,104 +121,126 @@ class Calculator extends Component {
         } else if (op === '+' || op === '-' || op === '*' || op === '/') {
             // The operator that was clicked is one of: + - * /
             if (op === '+') {
+                // Allow for operator change if no numbers have been pressed
                 if (this.state.currentOperator !== '' && this.state.currentEntry === '0') {
                     this.setState({
                         currentOperator: '+'
                     });
                 } else if (this.state.currentOperator !== '') {
+                    // Perform the calculation of the last operator. This allows
+                    // operations to be chained together without needing to press
+                    // the equals key.
                     this.setState({
                         total: calculate(this.state.total, this.state.currentEntry, this.state.currentOperator),
                         currentEntry: '0',
                         currentOperator: '+',
                     });
                 } else if (this.state.total !== 0) {
+                    // There is a total value with no current operator. This
+                    // occurs after the equal button is pressed. Set currentOperator
+                    // to the operator that was pressed.
                     this.setState({
-                        //total: calculate(this.state.currentEntry, this.state.total, "+"),
-                        currentEntry: '0',
                         currentOperator: '+',
                     });
                 } else {
+                    // Total === 0. Set the total to currentEntry.
                     this.setState({
-                        total: this.state.currentEntry,
+                        total: parseFloat(this.state.currentEntry).toString(),
                         currentEntry: '0',
                         currentOperator: '+',
                     });
                 }
             } else if (op === '-') {
+                // Allow for operator change if no numbers have been pressed
                 if (this.state.currentOperator !== '' && this.state.currentEntry === '0') {
                     this.setState({
                         currentOperator: '-'
                     })
                 } else if (this.state.currentOperator !== '') {
+                    // Perform the calculation of the last operator. This allows
+                    // operations to be chained together without needing to press
+                    // the equals key.
                     this.setState({
                         total: calculate(this.state.total, this.state.currentEntry, this.state.currentOperator),
                         currentEntry: '0',
                         currentOperator: '-',
                     })
                 } else if (this.state.total !== 0) {
+                    // There is a total value with no current operator. This
+                    // occurs after the equal button is pressed. Set currentOperator
+                    // to the operator that was pressed.
                     this.setState({
-                        //total: calculate(this.state.currentEntry, this.state.total, "-"),
-                        currentEntry: '0',
                         currentOperator: '-',
                     })
                 } else {
-                    // total === 0 and currentOperator === ''
+                    // Total === 0. Set the total to currentEntry.
                     this.setState({
-                        total: this.state.currentEntry,
+                        total: parseFloat(this.state.currentEntry).toString(),
                         currentEntry: '0',
                         currentOperator: '-',
                     })
                 }
             } else if (op === '*') {
+                // Allow for operator change if no numbers have been pressed
                 if (this.state.currentOperator !== '' && this.state.currentEntry === '0') {
                     this.setState({
                         currentOperator: '*'
                     })
                 } else if (this.state.currentOperator !== '') {
+                    // Perform the calculation of the last operator. This allows
+                    // operations to be chained together without needing to press
+                    // the equals key.
                     this.setState({
                         total: calculate(this.state.total, this.state.currentEntry, this.state.currentOperator),
                         currentEntry: '0',
                         currentOperator: '*',
                     })
                 } else if (this.state.total !== 0) {
+                    // There is a total value with no current operator. This
+                    // occurs after the equal button is pressed. Set currentOperator
+                    // to the operator that was pressed.
                     this.setState({
-                        //total: calculate(this.state.currentEntry, this.state.total, "*"),
-                        currentEntry: '0',
                         currentOperator: '*',
                     })
                 } else {
+                    // Total === 0. Set the total to currentEntry.
                     this.setState({
-                        total: this.state.currentEntry,
+                        total: parseFloat(this.state.currentEntry).toString(),
                         currentEntry: '0',
                         currentOperator: '*',
                     })
                 }
             } else if (op === '/') {
+                // Allow for operator change if no numbers have been pressed
                 if (this.state.currentOperator !== '' && this.state.currentEntry === '0') {
                     this.setState({
                         currentOperator: '/'
                     })
                 } else if (this.state.currentOperator !== '') {
+                    // Perform the calculation of the last operator. This allows
+                    // operations to be chained together without needing to press
+                    // the equals key.
                     this.setState({
                         total: calculate(this.state.total, this.state.currentEntry, this.state.currentOperator),
                         currentEntry: '0',
                         currentOperator: '/',
                     })
                 } else if (this.state.total !== 0) {
+                    // There is a total value with no current operator. This
+                    // occurs after the equal button is pressed. Set currentOperator
+                    // to the operator that was pressed.
                     this.setState({
-                        //total: calculate(this.state.currentEntry, this.state.total, "/"),
-                        currentEntry: '0',
                         currentOperator: '/',
                     })
                 } else {
+                    // Total === 0. Set the total to currentEntry.
                     this.setState({
-                        total: this.state.currentEntry,
+                        total: parseFloat(this.state.currentEntry).toString(),
                         currentEntry: '0',
                         currentOperator: '/',
                     })
                 }
             }
-
         } else if (op === 'AC') {
             this.setState({
                 currentEntry: '0',
@@ -228,18 +252,17 @@ class Calculator extends Component {
                 currentEntry: '0'
             })
         } else if (op === "+-") {
-            if (this.state.currentEntry === 0) {
-                console.log("TRIG");
+            if (this.state.currentEntry === '0') {
                 this.setState({
                     currentEntry: '-0'
+                })
+            } else if (this.state.currentEntry === '-0') {
+                this.setState({
+                    currentEntry: '0'
                 })
             } else if (this.state.currentEntry !== 'Overflow!') {
                 this.setState({
                     currentEntry: -parseFloat(this.state.currentEntry).toString()
-                })
-            } else {
-                this.setState({
-                    currentEntry: '-0'
                 })
             }
         }
