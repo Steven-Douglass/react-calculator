@@ -3,6 +3,7 @@ export const calculate = (lhs, rhs, operator) => {
     if (lhs === 'Error - division by 0') 
         return 'Error - division by 0';
 
+    // Total will hold the final value of the calculation
     var total = 0;
 
     // Calculate total based on operator
@@ -34,6 +35,5 @@ export const calculate = (lhs, rhs, operator) => {
             total = total.toFixed(5);
     }
 
-    // Return the total
     return total;
 }
