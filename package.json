@@ -1,7 +1,7 @@
 {
   "name": "calculator",
   "version": "0.1.0",
-  "homepage": "https://steven-douglass.github.io/react-calculator/",
+  "homepage": "https://steven-douglass.github.io/react-calculator-pwa/",
   "private": true,
   "dependencies": {
     "react": "^16.7.0",
