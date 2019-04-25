@@ -57,6 +57,10 @@ button:focus {
     background-color: rgb(238, 196, 105);
 }
 
+#buttons > .number:active {
+    background-color: rgb(112, 214, 115);
+}
+
 #calculator {
     background-color:#484c51;
     border-radius:10px;

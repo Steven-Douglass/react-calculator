@@ -262,7 +262,7 @@ class Calculator extends Component {
         }
     }
 
-    render() {
+    render () {
         return (
             <div id='calculator'>
                 <div id="display">
@@ -270,23 +270,23 @@ class Calculator extends Component {
                     <p id="displayText">{this.state.total}</p>
                 </div>
                 <div id='buttons'>
-                    <button onClick={() => this.handleClickNum("7")} id="7">7</button>
-                    <button onClick={() => this.handleClickNum("8")} id="8">8</button>
-                    <button onClick={() => this.handleClickNum("9")} id="9">9</button>
+                    <button onClick={() => this.handleClickNum("7")} id="7" className='number'>7</button>
+                    <button onClick={() => this.handleClickNum("8")} id="8" className='number'>8</button>
+                    <button onClick={() => this.handleClickNum("9")} id="9" className='number'>9</button>
                     <button onClick={() => this.handleClickOperator("+")} id="add"
                         className={this.state.currentOperator === "+" ? 'bigText buttonPressed' : 'bigText' }>+</button>
-                    <button onClick={() => this.handleClickNum("4")} id="4">4</button>
-                    <button onClick={() => this.handleClickNum("5")} id="5">5</button>
-                    <button onClick={() => this.handleClickNum("6")} id="6">6</button>
+                    <button onClick={() => this.handleClickNum("4")} id="4" className='number'>4</button>
+                    <button onClick={() => this.handleClickNum("5")} id="5" className='number'>5</button>
+                    <button onClick={() => this.handleClickNum("6")} id="6" className='number'>6</button>
                     <button onClick={() => this.handleClickOperator("-")} id="subtract"
                         className={this.state.currentOperator === "-" ? 'bigText buttonPressed' : 'bigText' }>&minus;</button>
-                    <button onClick={() => this.handleClickNum("1")} id="1">1</button>
-                    <button onClick={() => this.handleClickNum("2")} id="2">2</button>
-                    <button onClick={() => this.handleClickNum("3")} id="3">3</button>
+                    <button onClick={() => this.handleClickNum("1")} id="1" className='number'>1</button>
+                    <button onClick={() => this.handleClickNum("2")} id="2" className='number'>2</button>
+                    <button onClick={() => this.handleClickNum("3")} id="3" className='number'>3</button>
                     <button onClick={() => this.handleClickOperator("*")} id="multiply"
                         className={this.state.currentOperator === "*" ? 'bigText buttonPressed' : 'bigText' }>&times;</button>
                     <button onClick={() => this.handleClickNum("0")} id="btn0">0</button>
-                    <button onClick={() => this.handleClickNum(".")} id="decimal">.</button>
+                    <button onClick={() => this.handleClickNum(".")} id="decimal" className='number'>.</button>
                     <button onClick={() => this.handleClickOperator("/")} id="divide"
                         className={this.state.currentOperator === "/" ? 'bigText buttonPressed' : 'bigText' }>&divide;</button>
                     <button onClick={() => this.handleClickOperator("AC")} id="AC">AC</button>
